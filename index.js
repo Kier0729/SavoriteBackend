@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
 import cors from "cors"
+import session from "express-session";
 
 const app = express();
 const port = 4000;
@@ -17,6 +18,18 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.enable("trust proxy");
+
+app.use(session({
+    secret: "JDG",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { //HOW LONG COOKIE WILL BE SAVE (1000 miliseconds = 1 second * 60 = 1 min * 60 = 1hr )
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
+      secure: true,
+    },  
+  })
+  );
 
 const db = new pg.Client({
     user: "postgresql",
