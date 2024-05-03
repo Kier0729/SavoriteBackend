@@ -16,6 +16,8 @@ const corsOptions = {
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.enable("trust proxy");
+
 const db = new pg.Client({
     user: "postgresql",
     host: "dpg-cnk4gaol6cac73a2c530-a.singapore-postgres.render.com",
