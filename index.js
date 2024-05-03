@@ -8,7 +8,7 @@ const app = express();
 const port = 4000;
 
 const corsOptions = {
-    origin: "https://savoritefrontend.onrender.com/",
+    origin: "https://savoritefrontend.onrender.com",
     credentials: true,
   }
   
